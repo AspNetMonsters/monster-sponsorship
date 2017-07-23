@@ -1,0 +1,81 @@
+﻿@model SponsorshipModel
+
+<div class="row">
+
+    <h3>Did We Get That Right?</h3>
+    <p>
+        Please review the information below, and if you 
+        are all set, click the button at the bottom 
+        of the form to complete the sponsorship process.
+    </p>
+    
+    <hr />
+
+    <table>
+        <thead>
+            <tr>
+                <th colspan="2">Sponsorship Review</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Company Name</td>
+                <td>@Model.Name</td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td>@Model.Email</td>
+            </tr>
+            <tr>
+                <td>Website</td>
+                <td>@Model.Website</td>
+            </tr>
+            <tr>
+                <td>Your Product Tagline</td>
+                <td>@Model.Tagline</td>
+            </tr>
+            <tr>
+                <td>Notes</td>
+                <td>@Model.Notes</td>
+            </tr>
+            <tr>
+                <td>Total (Including GST)</td>
+                <td>@Model.Total.ToString("c")</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <hr />
+
+    <div class="callout">
+        <ul class="menu simple">            
+            <li>
+                <form action="/Sponsorship/Complete" method="POST">
+                    <input type="hidden" name="NumberOfEpisodes" value="@Model.NumberOfEpisodes" />
+                    <input type="hidden" name="StripeAmount" value="@Model.StripeAmount" />
+                    <input type="hidden" name="Email" value="@Model.Email" />
+                    <input type="hidden" name="Website" value="@Model.Website" />
+                    <input type="hidden" name="Name" value="@Model.Name" />
+                    <input type="hidden" name="Tagline" value="@Model.Tagline" />
+                    <input type="hidden" name="Notes" value="@Model.Notes" />                    
+
+                    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                            data-key="@Model.StripeKey"
+                            data-amount="@Model.StripeAmount"
+                            data-name="ASP.NET Monsters"
+                            data-email="@Model.Email"
+                            data-description="ASP.NET Monsters Sponsorship"
+                            data-image="/images/small_logo.png"
+                            data-locale="auto"
+                            data-billing-address="true"
+                            data-currency="cad"
+                            data-zip-code="true"
+                            data-label="Sponsor the Monsters">
+                    </script>
+
+                </form>
+            </li>
+        </ul>
+    </div>
+
+</div>

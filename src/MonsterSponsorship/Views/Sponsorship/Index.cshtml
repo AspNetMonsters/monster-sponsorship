@@ -1,0 +1,151 @@
+﻿@model MonsterSponsorship.Models.SponsorshipModel
+
+    <div class="row ">
+        <h2>ASP.NET Monsters Sponsorship</h2>
+
+        <p>
+            Thanks for your interest in Sponsoring the <a href="https://channel9.msdn.com/Series/aspnetmonsters?sort=recent#tab_sortBy_recent" target="_blank">ASP.NET Monsters Weekly</a>.
+        </p>
+        <p>
+            In return for your sponsorship, we will thank your company in our intro and give a brief overview of your services and/or products. We will also include a link to your website in our show notes. All you need to do is fill out the details below.
+        </p>
+
+        <hr />        
+
+        <form asp-controller="Sponsorship" asp-action="Review" method="post">
+            <div class="callout alert" asp-validation-summary="All">
+                
+            </div>
+            <div id="registration-form">
+                <div class="row">
+                    <div class="medium-6 columns">
+                        <label>
+                            Company Name
+                            <input asp-for="Name" placeholder="Your Company Name">
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="medium-6 columns">
+                        <label>
+                            Email Address
+                            <input asp-for="Email">
+                        </label>
+                    </div>
+                </div>                
+
+                <div class="row">
+                    <div class="medium-6 columns">
+                        <label>
+                            Website - <i>We'll link to this in our show notes</i>
+                            <input asp-for="Website">
+                        </label>                        
+                    </div>
+                </div>          
+                <div class="row">
+                    <div class="medium-6 columns">
+                        <label>
+                            Your Product Tagline - <i>We'll use this in our intro when we mention your product/service</i>
+                            <input asp-for="Tagline">
+                        </label>
+                    </div>
+                </div>          
+                <div class="row">
+                    <div class="medium-6 columns">
+                        <label>
+                            Any other notes for us - <i>Optional</i>
+                            <textarea asp-for="Notes" lines="5"></textarea>
+                        </label>
+                    </div>
+                </div>  
+
+                <div class="row">
+                    <div class="medium-6 columns">
+                        <label>
+                            How many episodes would you like to sponsor?
+                        </label>
+                        <div class="medium-9 columns">
+                            <div class="slider" data-slider data-initial-start="@Model.NumberOfEpisodes" data-start="1" data-end="25" data-changed-delay="150">
+                                <span class="slider-handle" data-slider-handle role="slider" tabindex="1" aria-controls="NumberOfEpisodes"></span>
+                                <span class="slider-fill" data-slider-fill></span>
+                            </div>
+                        </div>
+                        <div class="medium-3 columns">
+                            <input asp-for="NumberOfEpisodes"/>
+                            <input type="hidden" name="Total" id="Total" />
+                            <input type="hidden" name="Gst" id="Gst" />
+                        </div>
+                    </div>
+                </div>
+
+                <hr />
+
+                <div>
+                    <h5>Sponsorship Cost</h5>
+                    <div class="row">
+                        <div class="medium-6 columns">                            
+                            <div class="medium-9 columns">
+                                <p><strong>Subtotal:</strong></p>
+                            </div>
+                            <div class="medium-3 columns">
+                                <p><span id="net-amount">$</span> CAD</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="medium-6 columns">
+                            <div class="medium-9 columns">
+                                <p><strong>Tax (GST):</strong></p>
+                            </div>
+                            <div class="medium-3 columns">
+                                <p><span id="total-gst">$</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="medium-6 columns">
+                            <div class="medium-9 columns">
+                                <p><strong>Total:</strong></p>
+                            </div>
+                            <div class="medium-3 columns">
+                                <p><span style="font-weight:bold" id="total-amount">$</span> CAD </p>
+                            </div>
+                        </div>
+                    </div>                    
+                </div>
+
+                <hr />
+
+                <button type="submit" class="button success">Sponsor the Monsters</button>
+
+            </div>
+        </form>
+
+
+    </div>
+
+    @section Scripts{
+
+        <script type="text/javascript">
+
+            $(function () {
+
+                $('.slider').on('changed.zf.slider', function () {
+
+                    var class_size = $(this).children('.slider-handle').attr('aria-valuenow');
+                    var total = parseInt(class_size) * 50;
+                    var gst = 0.05 * (total);
+
+                    $("#total-gst").html("$" + gst.toFixed(2));
+                    $("#net-amount").html("$" + total.toFixed(2));
+                    $("#total-amount").html("$" + (gst + total).toFixed(2));
+
+                    $('#Total').val(total);
+                    $('#Gst').val(gst);
+
+                });
+            });
+
+        </script>
+
+    }

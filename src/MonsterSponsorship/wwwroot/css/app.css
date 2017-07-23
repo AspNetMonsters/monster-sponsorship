@@ -1,0 +1,105 @@
+.header {
+  text-align: center;
+  background: #074E68;
+  background-size: cover;
+  position: relative;
+  overflow: visible;
+  padding-top: 0.5rem;
+  padding-bottom: 1.75rem; }
+  .header .headline {
+    color: #ffe; }
+
+.header-subnav {
+  float: none;
+  position: absolute;
+  text-align: center;
+  margin: 0 auto;
+  bottom: 0;
+  width: 100%; }
+  .header-subnav li {
+    float: none;
+    display: inline-block; }
+    .header-subnav li a {
+      padding: 0.9rem 1rem;
+      font-size: 0.75rem;
+      color: #ffe;
+      text-transform: uppercase;
+      display: block;
+      font-weight: bold;
+      letter-spacing: 1px;
+      transition: all 0.35s ease-in-out; }
+      .header-subnav li a.is-active {
+        background: rgba(250, 250, 250, 0.15); }
+      .header-subnav li a:hover {
+        background: rgba(250, 250, 250, 0.15);
+        transition: all 0.35s ease-in-out; }
+
+.accordion-title
+{
+    font-size:18px;
+}
+
+
+@media screen and (max-width: 39.9375em) {
+    .parallax-background {
+        display:none;
+    }
+
+    .parallax-content {
+	    max-width: 100%;
+	    position: relative;
+	    top: 0px;
+	    background-color: #fff;
+    }
+
+    .monster-image{
+    float:right;
+    max-width:100px;
+    margin-left:15px;
+}
+}
+
+@media screen and (min-width: 40em) {
+    .parallax-background {
+	    background-image: url("../images/monsters.png");
+	    height: 620px;
+	    background-repeat: no-repeat;
+	    -webkit-background-size: cover;
+  	    -moz-background-size: cover;
+  	    -o-background-size: cover;
+	    background-size: cover;
+        background-position: 50% 25%;
+	    position: fixed;
+	    width: 100%;
+    }
+    
+    .intro-text {
+	    font-size: 50px;
+	    color: #fff;
+	    text-align: center;
+        position:relative;
+	    margin-top: 400px;
+    }
+
+    .parallax-content {
+	    max-width: 100%;
+	    position: relative;
+	    top: 500px;
+	    background-color: #fff;
+    }
+
+    .monster-image{
+    float:right;
+    max-width:300px;
+    margin-left:25px;
+}
+}
+
+
+.first-para {
+    margin-top: 25px;
+    margin-bottom:150px;
+}
+
+
+

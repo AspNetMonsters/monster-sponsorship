@@ -1,0 +1,38 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@using Microsoft.Extensions.Options
+@model CompleteModel
+@inject IOptions<BusinessOptions> BusinessOptions
+
+<div class="row medium-9 large-9 columns">
+    <div class="callout success">
+        <h5>Your payment has been accepted.</h5>
+    </div>
+
+    <h3>Thanks for your support!</h3>
+    <img src="~/images/logo_400.png" class="monster-image" />
+
+
+    <h4>Your Receipt</h4>
+    <h5>@DateTime.Today.ToString()</h5>
+    <table>
+        <tr>
+            <td>Sponsorship of ASP.NET Monsters Weekly</td>
+            <td>@Model.NumberOfEpisodes</td>
+            <td>@BusinessOptions.Value.PricePerEpisode</td>
+            <td>@Model.SubTotal.ToString("c")</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td>Tax (GST)</td>
+            <td>@Model.Gst.ToString("c")</td>
+            <td>@Model.Total.ToString("c")</td>
+        </tr>
+        <tr>
+            <td colspan="4"><span class="medium-text-left">GST Number @BusinessOptions.Value.GstNumber</span></td>
+        </tr>
+    </table>
+
+</div>
