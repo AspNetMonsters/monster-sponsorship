@@ -50,7 +50,7 @@
     <div class="callout">
         <ul class="menu simple">            
             <li>
-                <form action="/Sponsorship/Complete" method="POST">
+                <form action="~/Sponsorship/Complete" method="POST">
                     <input type="hidden" name="NumberOfEpisodes" value="@Model.NumberOfEpisodes" />
                     <input type="hidden" name="StripeAmount" value="@Model.StripeAmount" />
                     <input type="hidden" name="Email" value="@Model.Email" />
@@ -65,7 +65,7 @@
                             data-name="ASP.NET Monsters"
                             data-email="@Model.Email"
                             data-description="ASP.NET Monsters Sponsorship"
-                            data-image="/images/small_logo.png"
+                            data-image="@Url.Content("~/images/small_logo.png")"
                             data-locale="auto"
                             data-billing-address="true"
                             data-currency="cad"

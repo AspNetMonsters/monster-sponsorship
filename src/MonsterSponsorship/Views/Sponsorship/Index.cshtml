@@ -1,4 +1,7 @@
-﻿@model MonsterSponsorship.Models.SponsorshipModel
+﻿@using Microsoft.Extensions.Options
+@model MonsterSponsorship.Models.SponsorshipModel
+@inject IOptions<BusinessOptions> BusinessOptions
+
 
     <div class="row ">
         <h2>ASP.NET Monsters Sponsorship</h2>
@@ -133,7 +136,7 @@
                 $('.slider').on('changed.zf.slider', function () {
 
                     var class_size = $(this).children('.slider-handle').attr('aria-valuenow');
-                    var total = parseInt(class_size) * 50;
+                    var total = parseInt(class_size) * @BusinessOptions.Value.PricePerEpisode;
                     var gst = 0.05 * (total);
 
                     $("#total-gst").html("$" + gst.toFixed(2));
